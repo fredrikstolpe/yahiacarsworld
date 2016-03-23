@@ -5,5 +5,9 @@
 </head>
 <body>
 
+Select cars from cars table
+
+Buy link or button
+
 </body>
 </html>

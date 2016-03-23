@@ -5,5 +5,9 @@
 </head>
 <body>
 
+Create order in order table
+
+Show thanks message
+
 </body>
 </html>

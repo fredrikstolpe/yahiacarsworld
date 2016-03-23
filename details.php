@@ -5,5 +5,9 @@
 </head>
 <body>
 
+Details of a car
+
+Email field and buy button
+
 </body>
 </html>
