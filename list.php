@@ -16,13 +16,18 @@ $mychoice=$_POST["mychoice"];
 <body>
 
 <?php 
-
 $result=$conn->query("SELECT * FROM `cars`");
 if ($result)
 {
 	while ($row=$result->fetch_assoc()){
-		echo "Id: " . $row["Id"]." Name: " . $row["Name"]."Number: " . $row["Number"]."Color: " . $row["Color"]."Price: " . $row["Price"]."<br>";
-		echo "<a href='details.php?id=" . $row["Id"] . "'>Köp</a>";
+?>
+	<div>
+		<h2><?php echo $row["Name"] ?></h2>
+		<p>Färg: <?php echo $row["Color"] ?></p>
+		<p>Pris: <?php echo $row["Price"] ?></p>
+		<a href="details.php?id=<?php echo $row["Id"] ?>">Köp</a>
+	</div>
+<?php
 	}
 }
 ?>
