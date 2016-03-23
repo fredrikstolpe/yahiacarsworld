@@ -5,7 +5,7 @@
 </head>
 <body>
 
-Details of a car
+Details of a car.
 
 Email field and buy button
 
