@@ -18,9 +18,11 @@ $conn= new mysqli($servername,$username,$password,$dbname);
 <?php
 
 $carid=$_GET["id"];
-$query = "SELECT * FROM `cars` WHERE `Id`= " . $carid;
-echo $query;
-$result = $conn->query($query);
+
+$stmt = $conn->prepare("SELECT * FROM `cars` WHERE Id = ?");
+$stmt->bind_param('i', $carid);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if ($result){
 	$row=$result->fetch_assoc();
