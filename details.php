@@ -29,6 +29,14 @@ if ($result){
 	echo $row["Name"];	
 }
 	
-?>	
+?>
+
+<form method="GET" action="order.php">
+	<input type="text" name="mail"/>
+	<button >Submit</button>
+	<input type="hidden" name="carid" value="<?php echo $carid ?>"/>
+	
+	</form>
+
 </body>
 </html>
