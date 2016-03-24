@@ -16,13 +16,20 @@ $mail=$_GET["mail"];
 <body>
 <?php
 
-if ($mail){
-	$query="INSERT INTO `orders`(`E-mail`) VALUES ('".$mail."')";
-	//$result=$conn->query();
-	echo $query;
-	}
+	
+$mail=$_GET["mail"];
 
+$stmt = $conn->prepare("INSERT * FROM `orders` WHERE Id = ?");
+$stmt->bind_param('i', $carid);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($mail){
+	$query=$result->fetch_assoc();
+	echo $row["Email"];	
+}
 ?>
+
 
 Create order in order table
 
@@ -30,3 +37,5 @@ Show thanks message
 
 </body>
 </html>
+
+
