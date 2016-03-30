@@ -5,7 +5,7 @@ $password="";
 $dbname="carsworld";
 
 $conn= new mysqli($servername,$username,$password,$dbname);
-$cars = array ("volvo","bmw","saap");
+
 ?>
 <html>
 <head>
@@ -24,7 +24,7 @@ if ($result)
 		<h2><?php echo $row["Name"] ?></h2>
 		<p>Färg: <?php echo $row["Color"] ?></p>
 		<p>Pris: <?php echo $row["Price"] ?></p>
-		<a href="details.php?id=<?php echo $row["Id"] ?>">Köp</a>
+		<a href="details.php?carid=<?php echo $row["Id"] ?>">Köp</a>
 	 </div>
      <?php  
 	}
@@ -34,3 +34,4 @@ if ($result)
 
 </body>
 </html>
+
