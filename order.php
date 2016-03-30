@@ -6,8 +6,8 @@ $dbname="carsworld";
 
 $conn= new mysqli($servername,$username,$password,$dbname);
 
-$mail=$_GET["mail"];
-$carid=$_GET["carid"];
+$Email=$_GET["Email"];
+$Carid=$_GET["Carid"];
 ?>
 <html>
 <head>
@@ -28,9 +28,9 @@ if ($mail){
 	
 }
 */
-	if ($mail && $carid){
+	if ($Email && $Carid){
 		$stmt=$conn->prepare("INSERT INTO `orders` ( `Carid`, `Email`) VALUES (?,?) ");   
-		$stmt->bind_param("is",$carid, $mail);
+		$stmt->bind_param("is",$Carid, $Email);
 		if (!$stmt->execute()) {
 				echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 
@@ -39,10 +39,8 @@ if ($mail){
 	}
 			
 
-		$mail=$_GET["mail"];
-		$carid=$_GET["carid"];
-		$stmt = $conn->prepare("SELECT * FROM `orders` WHERE carid = ? ");
-		$stmt->bind_param('i', $carid);
+		$stmt = $conn->prepare("SELECT * FROM `orders` WHERE Carid = ? ");
+		$stmt->bind_param('i', $Carid);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		if ($result){
@@ -51,7 +49,7 @@ if ($mail){
 				?>
 					<div>
 						<h1><?php echo "Thank You!"?></h1>
-						<p> <?php echo "Din ".$row["Name"]."Kommer Att Levererans Snart"?></p>
+						<p> <?php// echo "Din ".$row["Name"]."Kommer Att Levererans Snart"?></p>
 						
 						
 					 </div>
@@ -63,17 +61,6 @@ if ($mail){
 				?>
 					 
 					 
-					 
-					 
-				
-			
-		
-
-
-				
-
-
-
 Create order in order table
 
 Show thanks message
