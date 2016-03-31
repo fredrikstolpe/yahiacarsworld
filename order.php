@@ -6,8 +6,8 @@ $dbname="carsworld";
 
 $conn= new mysqli($servername,$username,$password,$dbname);
 
-$Email=$_GET["Email"];
-$Carid=$_GET["Carid"];
+$email=$_GET["email"];
+$carid=$_GET["carid"];
 ?>
 <html>
 <head>
@@ -16,21 +16,22 @@ $Carid=$_GET["Carid"];
 </head>
 <body>
 <?php
-/*
-$stmt = $conn->prepare("INSERT * FROM `orders` WHERE Id = ?");
-$stmt->bind_param('i', $carid);
-$stmt->execute();
-$result = $stmt->get_result();
 
-if ($mail){
-	$query=$result->fetch_assoc();
-	echo $row["Email"];
-	
-}
-*/
-	if ($Email && $Carid){
+
+	if ($email && $carid){
+		
+		$emailIsValid = filter_var($email, FILTER_VALIDATE_EMAIL);
+		
+		if (!$emailIsValid){
+			?>
+				<h1>Ett fel inträffade!</h1>
+				<P>Epostadressen är felaktig</p>
+			<?php
+			die();
+		}
+		
 		$stmt=$conn->prepare("INSERT INTO `orders` ( `Carid`, `Email`) VALUES (?,?) ");   
-		$stmt->bind_param("is",$Carid, $Email);
+		$stmt->bind_param("is",$carid, $email);
 		if (!$stmt->execute()) {
 				echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 
@@ -39,19 +40,17 @@ if ($mail){
 	}
 			
 
-		$stmt = $conn->prepare("SELECT * FROM `orders` WHERE Carid = ? ");
-		$stmt->bind_param('i', $Carid);
+		$stmt = $conn->prepare("SELECT * FROM `cars` WHERE Id = ? ");
+		$stmt->bind_param('i', $carid);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		if ($result){
-				
+				$row=$result->fetch_assoc();
 			
 				?>
 					<div>
-						<h1><?php echo "Thank You!"?></h1>
-						<p> <?php// echo "Din ".$row["Name"]."Kommer Att Levererans Snart"?></p>
-						
-						
+						<h1>Thank You!</h1>
+						<p>Din <?php echo $row["Name"] ?> Kommer Att Levererans Snart.</p>
 					 </div>
 				<?php
 		
