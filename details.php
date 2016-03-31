@@ -8,12 +8,7 @@ $conn= new mysqli($servername,$username,$password,$dbname);
 $carid=$_GET["carid"];
 
 ?>
-<html>
-<head>
-<meta http-equiv="content-type" charset="UTF-8"/>
-
-</head>
-<body>
+<?php include 'header.php';?>
 
 <?php
 $stmt = $conn->prepare("SELECT * FROM `cars` WHERE Id = ?");
@@ -30,7 +25,7 @@ if ($result){
 ?>
 
 <form method="GET" action="order.php">
-	<input type="text" name="email"/>
+	<input name="email" type="text" class="form-control" placeholder="Enter email address...">
 	<button >Submit</button>
 	<input type="hidden" name="carid" value="<?php echo $carid ?>"/>
 </form>
