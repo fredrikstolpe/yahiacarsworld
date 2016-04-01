@@ -30,7 +30,7 @@ $carid=$_GET["carid"];
 			die();
 		}
 		
-		$stmt=$conn->prepare("INSERT INTO `orders` ( `Carid`, `Email`) VALUES (?,?) ");   
+		$stmt=$conn->prepare("INSERT INTO `orders` ( `carid`, `email`) VALUES (?,?) ");   
 		$stmt->bind_param("is",$carid, $email);
 		if (!$stmt->execute()) {
 				echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
@@ -60,9 +60,6 @@ $carid=$_GET["carid"];
 				?>
 					 
 					 
-Create order in order table
-
-Show thanks message
 
 </body>
 </html>
