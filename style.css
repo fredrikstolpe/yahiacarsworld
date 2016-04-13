@@ -1,7 +1,4 @@
-.cw-intro{
-	background-color:#dddddd;
-	padding-bottom:30px;
-}
+
 
 .cw-list-car:hover{
 	background-color:#eeeeee;
@@ -9,7 +6,93 @@
 .btn btn-primary{
 	
 }
-.img-rounded{
+font{
 	
-	
+	font-family:arial;
+	font-size:24px;
 }
+
+body {
+	font-family: 'open sans', helvetica, arial, sans-serif;
+	background-color: #ededed;
+	margin-left:500px;
+}
+
+h2, h3, h4, h5 {
+	font-family: open;
+	font-weight: 400;
+	color: #7a7a7a;
+}
+h1{
+	font-family:open;
+	font-size:102px;
+	margin-right:1000px;
+	color: #7a7a7a;
+	}
+.cw-intro {
+    background-color: #EAEAEA;
+    padding-bottom: 11px;
+    width: 1590px;
+}
+p{
+	
+	font-size:40px;
+	font-family:  open sans, Georgia,'Dancing Script', serif;
+	margin-right:1000px;
+	color: #7a7a7a;
+	line-height: 30px;
+}
+.img-rounded {
+    border-radius: 34px;
+}
+.input-group {
+    border-collapse: separate;
+    margin-top: 41px;
+    margin-left: -480px;
+}
+.element {
+    margin-left:-1668px;
+    margin-top:-770px;
+}
+.btn-default {
+    text-shadow: 0 1px 0 #fff;
+    width: 184px;
+}
+.btn-primary {
+	color:blue;
+	text-shadow:white;
+	background-color:white;
+}
+/*
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: white;
+}*/
+
+
+/*
+
+h1 {
+	color:red;
+	font-family:times;
+}
+
+h1 {
+	background-color:blue;
+	font-family:arial;
+}
+
+h1 {
+	color:yellow;
+	background-color:gray;
+}
+
+.myheadingclass {
+	color:blue;
+}
+
+.mypaddingclass {
+	padding:200px;
+}
+*/

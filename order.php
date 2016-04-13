@@ -50,7 +50,7 @@ $carid=$_GET["carid"];
 				?>
 					<div>
 						<h1>Thank You!</h1>
-						<p>Din <?php echo $row["Name"] ?> Kommer Att Levererans Snart.</p>
+						<h2>Din <?php echo $row["Name"] ?> Kommer Att Levererans Snart.</h2>
 					 </div>
 				<?php
 		

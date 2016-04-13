@@ -13,13 +13,18 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700' rel='stylesheet' type='text/css'>
+	
+	<link href='https://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
 
 	<link rel="stylesheet" href="style.css">
-	
+	<link href='http://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 
 <div class="container text-center cw-intro">
-	<h1>Cars world</h1>
-	<p>Here you can buy Volvo, BMW and Saab.</p>
+	<h1 class="myheadingclass mypaddingclass ">Cars world</h1>
+	<p>Here you can buy Volvo, Bmw and Saab.</p>
 </div>
