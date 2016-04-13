@@ -6,11 +6,12 @@ $dbname="carsworld";
 
 $conn= new mysqli($servername,$username,$password,$dbname);
 
-	$minprice = empty($_GET["minprice"]) ? 0 : $_GET["minprice"];
-	$maxprice = empty($_GET["maxprice"]) ? 10000000 : $_GET["maxprice"];
+$mybrands = empty($_GET["mybrand"]) ? array('volvo', 'bmw', 'saap') : $_GET["mybrand"];
+$minprice = empty($_GET["minprice"]) ? 0 : $_GET["minprice"];
+$maxprice = empty($_GET["maxprice"]) ? 10000000 : $_GET["maxprice"];
 
 ?>
-<html lang="en">
+<html >
 <body>
 <?php include 'header.php';?>
 			
@@ -27,38 +28,42 @@ $conn= new mysqli($servername,$username,$password,$dbname);
 			<option value="1000000">1,000,000</option>
 			<option value="600000" <?php if($maxprice=="600000"){echo('selected="selected"');}?>>600,000</option>
 		</select><br/>
-		
-			  <input type="checkbox" name="mybrand[]" value="volvo" >volvo</input>
-			  <input type="checkbox" name="mybrand[]" value="bmw" >bmw</input>
-			  <input type="checkbox" name="mybrand[]" value="saap" >saap</input>
+			
+			  <input type="checkbox"  name="mybrand[]" <?php if (is_array ($mybrands) &&in_array("volvo", $mybrands)) {echo  ('checked="checked"');}?> value="volvo" >volvo</input>
+				<input type="checkbox" name="mybrand[]" <?php if (is_array ($mybrands) &&in_array("bmw", $mybrands)) {echo  ('checked="checked"');}?> value="bmw" >bmw</input>
+			  <input type="checkbox" name="mybrand[]" <?php if (is_array ($mybrands)  &&in_array ("saap", $mybrands)) {echo  ('checked="checked"');}?> value="saap" >saap</input>
 			  <button>Sök</button>
 			  
-		
+			
 		
 	</form>
-	<?php 
-	//$result=$conn->query("SELECT * FROM `cars`" );
 	
-	//SELECT * FROM `cars` where name = 'volvo' or name = 'bmw'
+		
+			
+		
+
+				<?php 
 	
-		$mybrands=$_GET["mybrand"];
+			
 	
 		if ($mybrands){
-			//$result=$conn->query ("SELECT * FROM `cars` where name in ('volvo"); 
 			$in = join(',', array_fill(0, count($mybrands), '?'));
-			$select = "SELECT * FROM cars WHERE name IN ($in)";
+			$select = "SELECT * FROM cars WHERE Price > ? AND Price < ? AND name IN ($in) ";
+			
+			$minprice = empty($_GET["minprice"]) ? 0 : $_GET["minprice"];
+			$maxprice = empty($_GET["maxprice"]) ? 10000000 : $_GET["maxprice"];
+			
 			$statement = $conn->prepare($select);
-			//$statement->bind_param(str_repeat('s', count($mybrands)), $mybrands);
 			$count = count($mybrands);
-			if ($count==1) { $statement->bind_param('s', $mybrands[0]);}
-			if ($count==2) { $statement->bind_param('ss', $mybrands[0],$mybrands[1]);}
-			if ($count==3) { $statement->bind_param('sss', $mybrands[0],$mybrands[1],$mybrands[2]);}
-			if ($count==4) { $statement->bind_param('ssss', $mybrands[0],$mybrands[1],$mybrands[2],$mybrands[3]);}
+			if ($count==1) { $statement->bind_param('iis',$minprice,$maxprice,$mybrands[0]);}
+			if ($count==2) { $statement->bind_param('iiss',$minprice,$maxprice, $mybrands[0],$mybrands[1]);}
+			if ($count==3) { $statement->bind_param('iisss',$minprice,$maxprice, $mybrands[0],$mybrands[1],$mybrands[2]);}
+			if ($count==4) { $statement->bind_param('iissss',$minprice,$maxprice, $mybrands[0],$mybrands[1],$mybrands[2],$mybrands[3]);}
 			$statement->execute();
 			$result = $statement->get_result();
 
 		}
-		else {
+		/*else {
 
 			//"SELECT * FROM `cars` where name in ('volvo', 'bmw','saap')";
 			
@@ -72,7 +77,7 @@ $conn= new mysqli($servername,$username,$password,$dbname);
 
 		
 		}
-			
+			*/
 	
 	
 	if ($result)
@@ -95,4 +100,5 @@ $conn= new mysqli($servername,$username,$password,$dbname);
 </div>
 	
 	</body>
-</html>		
+
+	</html>		
