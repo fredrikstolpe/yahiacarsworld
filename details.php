@@ -1,25 +1,27 @@
 <?php 
-$servername="localhost";
-$username="root";
-$password="";
-$dbname="carsworld";
 
-$conn= new mysqli($servername,$username,$password,$dbname);
+
+
 $carid=$_GET["carid"];
 
 ?>
 <?php include 'header.php';?>
+<?php include 'carsrepository.php';?>
 <div class="container">
 	<div class="row">
 	<div class="col-sm-6 col-sm-offset-3">
 	 <div class="col-xs-4">
  </div>
+		
+		
 		<?php
-		$stmt = $conn->prepare("SELECT * FROM `cars` WHERE Id = ?");
+		$repository = new CarsRepository();
+		$result = $repository->getCar($carid);
+		/*$stmt = $conn->prepare("SELECT * FROM `cars` WHERE Id = ?");
 		$stmt->bind_param('i', $carid);
 		$stmt->execute();
 		$result = $stmt->get_result();
-
+		*/
 		if ($result){
 			
 			$row=$result->fetch_assoc();

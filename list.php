@@ -1,3 +1,4 @@
+<?php include 'carsrepository.php';?>
 <?php 
 $servername="localhost";
 $username="root";
@@ -14,6 +15,20 @@ $maxprice = empty($_GET["maxprice"]) ? 10000000 : $_GET["maxprice"];
 <html >
 <body>
 <?php include 'header.php';?>
+<?php 
+$repository = new CarsRepository();
+
+$result = $repository->getCar(1);
+
+$result = $repository->getAllCars();
+if ($result)
+{
+	while ($row=$result->fetch_assoc()){
+		echo $row["Name"];
+	}
+}
+	?>
+
 			
 <div class="container">
 	<form method="get" action="">
