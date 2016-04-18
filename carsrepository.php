@@ -29,6 +29,25 @@ class CarsRepository{
 		return $result;
 	}
 	
+	function searchCars($minprice, $maxprice, $mybrands){
+		if ($mybrands){
+			$in = join(',', array_fill(0, count($mybrands), '?'));
+			$select = "SELECT * FROM cars WHERE Price > ? AND Price < ? AND name IN ($in) ";
+			$select = "SELECT * FROM cars WHERE Price > ? AND Price < ? AND name IN ($in) ";
+			$statement =$this->conn->prepare($select);
+			$count = count($mybrands);
+			if ($count==1) { $statement->bind_param('iis',$minprice,$maxprice,$mybrands[0]);}
+			if ($count==2) { $statement->bind_param('iiss',$minprice,$maxprice, $mybrands[0],$mybrands[1]);}
+			if ($count==3) { $statement->bind_param('iisss',$minprice,$maxprice, $mybrands[0],$mybrands[1],$mybrands[2]);}
+			if ($count==4) { $statement->bind_param('iissss',$minprice,$maxprice, $mybrands[0],$mybrands[1],$mybrands[2],$mybrands[3]);}
+			$statement->execute();
+			$result = $statement->get_result();
+			return $result;
+			
+
+		}
+	}
+	
 	function getCar($carid){
 		
 		$select = "SELECT * FROM cars WHERE Id = ? ";

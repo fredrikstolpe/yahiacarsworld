@@ -1,12 +1,5 @@
 <?php include 'carsrepository.php';?>
 <?php 
-$servername="localhost";
-$username="root";
-$password="";
-$dbname="carsworld";
-
-$conn= new mysqli($servername,$username,$password,$dbname);
-
 $mybrands = empty($_GET["mybrand"]) ? array('volvo', 'bmw', 'saap') : $_GET["mybrand"];//if else
 $minprice = empty($_GET["minprice"]) ? 0 : $_GET["minprice"];
 $maxprice = empty($_GET["maxprice"]) ? 10000000 : $_GET["maxprice"];
@@ -20,7 +13,6 @@ $maxprice = empty($_GET["maxprice"]) ? 10000000 : $_GET["maxprice"];
 <?php 
 
 $repository = new CarsRepository();//1the class name
-$result = $repository->getCar(1);//2call the function
 $result = $repository->getAllCars();
 if ($result)
 {
@@ -60,26 +52,8 @@ if ($result)
 
 	<?php 
 	
-			
-	
-		if ($mybrands){
-			$in = join(',', array_fill(0, count($mybrands), '?'));
-			$select = "SELECT * FROM cars WHERE Price > ? AND Price < ? AND name IN ($in) ";
-			
-			$minprice = empty($_GET["minprice"]) ? 0 : $_GET["minprice"];
-			$maxprice = empty($_GET["maxprice"]) ? 10000000 : $_GET["maxprice"];
-			
-			$statement = $conn->prepare($select);
-			$count = count($mybrands);
-			if ($count==1) { $statement->bind_param('iis',$minprice,$maxprice,$mybrands[0]);}
-			if ($count==2) { $statement->bind_param('iiss',$minprice,$maxprice, $mybrands[0],$mybrands[1]);}
-			if ($count==3) { $statement->bind_param('iisss',$minprice,$maxprice, $mybrands[0],$mybrands[1],$mybrands[2]);}
-			if ($count==4) { $statement->bind_param('iissss',$minprice,$maxprice, $mybrands[0],$mybrands[1],$mybrands[2],$mybrands[3]);}
-			$statement->execute();
-			$result = $statement->get_result();
-
-		}
-	
+		
+		$result = $repository->searchCars($minprice, $maxprice, $mybrands);
 		if ($result){
 		
 				while ($row=$result->fetch_assoc()){
