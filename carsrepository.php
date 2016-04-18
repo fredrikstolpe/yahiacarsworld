@@ -38,6 +38,12 @@ class CarsRepository{
 		$result = $statement->get_result();
 		return $result;
 	}
+
+	function createOrder($carid,$email){//بوست المتغيرات الى الفانكشن
+		$stmt=$this->conn->prepare("INSERT INTO `orders` ( `carid`, `email`) VALUES (?,?) ");   
+		$stmt->bind_param("is",$carid, $email);
+		return $stmt->execute();
+	}
 	
 }
 

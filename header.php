@@ -26,5 +26,5 @@
 
 <div class="container text-center cw-intro">
 	<h1 class="myheadingclass mypaddingclass ">Cars world</h1>
-	<p>Here you can buy Volvo, Bmw and Saab.</p>
+	<p>Here you can buy volvo, bmw and saab.</p>
 </div>
