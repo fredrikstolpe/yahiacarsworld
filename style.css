@@ -63,6 +63,48 @@ p{
 	text-shadow:white;
 	background-color:white;
 }
+select,label,element{
+	position:;
+    left: 100px;
+	clear:both;
+	width:100px;
+	text-align:center;
+	line-height:31px;
+	font-size:11px;
+	font-weight:bold;
+	padding: 3px;
+	}
+	
+	select{
+		
+		background-color:ffffff;
+	}
+	form{
+		margin-left:-15px;
+	}
+	checkbox {
+		margin-left:100px;
+	}
+	input[type="checkbox"], input[type="radio"] {
+    margin: 3px 0 0;
+    margin-top: 1px\9;
+    line-height: normal;
+    margin-left: 29px;
+}
+
+	
+
+/*.styled-select select {
+   background: transparent;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   }*/
 /*
 button, input, optgroup, select, textarea {
     margin: 0;
