@@ -15,7 +15,7 @@ font{
 body {
 	font-family: 'open sans', helvetica, arial, sans-serif;
 	background-color: #ededed;
-	margin-left:500px;
+	m-argin-left:500px;
 }
 
 h2, h3, h4, h5 {
@@ -26,19 +26,19 @@ h2, h3, h4, h5 {
 h1{
 	font-family:open;
 	font-size:102px;
-	margin-right:1000px;
+	m-argin-right:1000px;
 	color: #7a7a7a;
 	}
 .cw-intro {
     background-color: #EAEAEA;
     padding-bottom: 11px;
-    width: 1590px;
+    w-idth: 1590px;
 }
 p{
 	
 	font-size:40px;
 	font-family:  open sans, Georgia,'Dancing Script', serif;
-	margin-right:1000px;
+	m-argin-right:1000px;
 	color: #7a7a7a;
 	line-height: 30px;
 }

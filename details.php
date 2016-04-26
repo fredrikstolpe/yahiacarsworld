@@ -7,7 +7,7 @@ $carid=$_GET["carid"];
 ?>
 <?php include 'header.php';?>
 <?php include 'carsrepository.php';?>
-<div class="container">
+
 	<div class="row">
 	<div class="col-sm-6 col-sm-offset-3">
 	 <div class="col-xs-4">
@@ -27,6 +27,7 @@ $carid=$_GET["carid"];
 					<h2><?php echo $row["Name"] ?></h2>
 					<h3>Färg: <?php echo $row["Color"] ?></h3>
 					<h4>Pris: <?php echo $row["Price"] ?></h4>
+					<h5>Model: <?php echo $row["Model"] ?></h5>
 				</div> 
 
 				<?php
@@ -36,7 +37,7 @@ $carid=$_GET["carid"];
 	<form method="GET" action="order.php">
 	<input name="email" type="text" class="form-control" placeholder="Enter email address...">
 	<button  class="btn btn-primary">sköpa</button>
-	<input type="hidden" name="carid" value="<?php echo $carid ?>"/>
+	<input type="hidden" name="carid" value="<?php echo $carid ?>"/><?php //code explain?>
 	</form>
 
 </div>

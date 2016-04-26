@@ -17,7 +17,9 @@ $utils = new Utils();
 
 </head>
 <body>
+<div class=".container-fluid">
 <?php
+	
 	if (!$utils->emailIsValid($email)){
 		?>
 			<h1>Ett fel inträffade!</h1>
@@ -36,9 +38,12 @@ $utils = new Utils();
 				<h2>Din <?php echo $row["Name"] ?> Kommer Att Levererans Snart.</h2>
 			 </div>
 			<?php
+			
 		}	
+		
 	}
 ?>
+</div>
 </body>
 </html>
 
