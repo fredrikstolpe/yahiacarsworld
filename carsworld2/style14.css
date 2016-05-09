@@ -1,0 +1,7 @@
+select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin-left: 12px;
+    max-width: 188px;
+}

@@ -22,7 +22,7 @@ class CarsRepository{
 	}
 
 	function getAllCars(){
-		$select = "SELECT *FROM `cars`";
+		$select = "SELECT * FROM cars ";
 		$statement = $this->conn->prepare($select);
 		$statement->execute();
 		$result = $statement->get_result();
